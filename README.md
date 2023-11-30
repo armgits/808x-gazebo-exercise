@@ -114,7 +114,7 @@ file is saved to run:
 ros2 bag info output_bag/
 ```
 
-### Playing the Bag ile
+### Playing the Bag File
 
 In a similar fashion as the previous step:
 
