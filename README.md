@@ -92,3 +92,34 @@ ros2 launch gazebo_exercise exercise_launch.py --show-args
 >argument) in addition to the rosbag record argument from the Turtlebot 3 lanch
 >file.
 
+### Recording Bag File
+
+Appending the `record_bag:=True` parameter to the launch command enables recording
+all the message activity to a rosbag in the current working directory (Directory
+in the terminal where the launch command is executed). This option is disabled
+by default.
+
+```bash
+ros2 launch gazebo_exercise exercise_launch.py record_bag:=True
+```
+
+Recording stops when the Gazebo simulation is terminated.
+
+#### Inspecting the Bag File
+
+In the directory the previously discussed launch command is executed and the bag
+file is saved to run:
+
+```bash
+ros2 bag info output_bag/
+```
+
+### Playing the Bag ile
+
+In a similar fashion as the previous step:
+
+```bash
+ros2 bag play output_bag/
+```
+
+>Note: Gazebo should not be running in this step.
