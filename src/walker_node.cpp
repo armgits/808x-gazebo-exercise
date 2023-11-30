@@ -1,3 +1,14 @@
+/**
+ * @file walker_node.cpp
+ * @author Abhishekh Reddy (areddy42@umd.edu)
+ * @brief Source file for the Turtlebot walker node class that contains the
+ *        definitions.
+ * @version 1.0
+ * @date 2023-11-29
+ *
+ * @copyright Copyright (c) 2023 Abhishekh Reddy
+ *
+ */
 #include "walker_node.hpp"
 
 using namespace std::chrono_literals;
