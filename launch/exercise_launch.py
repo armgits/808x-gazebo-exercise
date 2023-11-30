@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-# Authors: Joep Tool
+# Authors: Joep Tool, Abhishekh Reddy
 
 import os
 
@@ -42,7 +42,7 @@ def generate_launch_description():
             os.path.join(pkg_turtlebot3_gazebo, 'launch', 'turtlebot3_house.launch.py')
         ),
         launch_arguments={'x_pose': '-1.0', 'y_pose': '3.0'}.items()
-        )
+    )
 
     record_bag_process = ExecuteProcess(
         cmd=['ros2', 'bag', 'record', '-a', '-x', "/camera/(.*)", '-o', 'output_bag'],
