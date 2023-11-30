@@ -26,3 +26,27 @@ ENPM808X - Abhishekh Reddy Munnangi, 119399002
 - The following section assumes that you have an existing ROS2 workspace. If not,
 see [how to create one](https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html#create-a-new-directory).
 
+### Cloning the repository
+
+The root directory of this repository are contents of a ROS2 package. Hence,
+this needs to be cloned to a folder in the `src/` directory of a ROS2 project
+workspace.
+
+```console
+<Your ROS2 Workspace>/
+├── build/
+├── install/
+├── log/
+└── src/
+    └── gazebo_exercise/ <-- Repository clones to this folder
+        └── <Repository contents>
+```
+
+<p align="center">Workspace directory tree with this repository contents in it</p>
+
+Run this command in the `src/` directory of your ROS2 workspace
+
+```bash
+git clone https://github.com/armgits/808x-gazebo-exercise.git gazebo_exercise
+```
+
