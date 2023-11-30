@@ -18,10 +18,10 @@ Walker::Walker() : Node("walker") {
 
   scanner_ = this->create_subscription<sensor_msgs::msg::LaserScan>(
       "scan", 10,
-      std::bind(&Walker::scannerCallback, this, std::placeholders::_1)
-  );
+      std::bind(&Walker::scannerCallback, this, std::placeholders::_1));
 
-  timer_ = this->create_wall_timer(250ms, std::bind(&Walker::timerCallback, this));
+  timer_ = this->create_wall_timer(250ms,
+                                       std::bind(&Walker::timerCallback, this));
 }
 
 void Walker::scannerCallback(const sensor_msgs::msg::LaserScan& data) {
@@ -67,7 +67,7 @@ void Walker::robotTurn(char direction) {
   stop_message.angular.set__z(0);
   walker_->publish(stop_message);
 
-  switch(direction) {
+  switch (direction) {
     case Walker::direction::left: {
       auto turn_message {geometry_msgs::msg::Twist()};
       turn_message.angular.set__z(-20 * M_PI/180);

@@ -30,7 +30,7 @@ class Walker : public rclcpp::Node {
   * @brief Constructor for the walker node
   *
   */
-  explicit Walker();
+  Walker();
 
   /**
    * @brief Direction label for using the turn methods
