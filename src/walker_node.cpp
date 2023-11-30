@@ -25,8 +25,8 @@ bool Walker::robotSenseLeft() {
     return false;
 
   // Sense robot left
-  for (auto d_i {scan_.ranges.begin()}; d_i < scan_.ranges.begin()+30; d_i++) {
-    if (*d_i < 0.2 * scan_.range_max)
+  for (auto i {scan_.ranges.begin()}; i < scan_.ranges.begin()+30; i++) {
+    if (*i < 0.2 * scan_.range_max)
       return true;
   }
 
@@ -38,8 +38,8 @@ bool Walker::robotSenseRight() {
     return false;
 
   // Sense robot right
-  for (auto d_i {scan_.ranges.rbegin()}; d_i < scan_.ranges.rbegin()+30; d_i++) {
-    if (*d_i < 0.2 * scan_.range_max)
+  for (auto i {scan_.ranges.rbegin()}; i < scan_.ranges.rbegin()+30; i++) {
+    if (*i < 0.2 * scan_.range_max)
       return true;
   }
 
