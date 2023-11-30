@@ -20,22 +20,39 @@ import os
 
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch.actions import IncludeLaunchDescription
+from launch.actions import (IncludeLaunchDescription, DeclareLaunchArgument,
+                                                      ExecuteProcess)
+from launch.substitutions import LaunchConfiguration, PythonExpression
 from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch.conditions import IfCondition
 
 
 def generate_launch_description():
+    record_bag_value = LaunchConfiguration('record_bag')
+    record_bag_arg = DeclareLaunchArgument(
+        'record_bag',
+        default_value='False',
+        description="Record messages on all topics to a rosbag?"
+    )
+
     pkg_turtlebot3_gazebo = get_package_share_directory('turtlebot3_gazebo')
 
     turtlebot3_launch_cmd = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(pkg_turtlebot3_gazebo, 'launch', 'turtlebot3_house.launch.py')
         )
+
+    record_bag_process = ExecuteProcess(
+        cmd=['ros2', 'bag', 'record', '-a', '-x', "/camera/(.*)", '-o', 'output_bag'],
+        output='screen',
+        condition=IfCondition(PythonExpression([record_bag_value]))
     )
 
     ld = LaunchDescription()
 
     # Add the commands to the launch description
+    ld.add_action(record_bag_arg)
     ld.add_action(turtlebot3_launch_cmd)
+    ld.add_action(record_bag_process)
 
     return ld
