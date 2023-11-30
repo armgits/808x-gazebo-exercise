@@ -50,3 +50,26 @@ Run this command in the `src/` directory of your ROS2 workspace
 git clone https://github.com/armgits/808x-gazebo-exercise.git gazebo_exercise
 ```
 
+>**Before the next step:** For the first time, ensure that the package
+> dependencies are installed. Run these commands from the **root workspace directory**.
+
+```bash
+rosdep init && rosdep update
+```
+
+```bash
+rosdep install --from-paths src -y --ignore-src
+```
+
+Build the package in the **root directory** of your ROS2 workspace.
+
+```bash
+colcon build --packages-select gazebo_exercise
+```
+
+Source the freshly built package
+
+```bash
+source install/setup.bash
+```
+
