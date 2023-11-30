@@ -73,3 +73,22 @@ Source the freshly built package
 source install/setup.bash
 ```
 
+### Launching the Gazebo Simulation
+
+THe launch file in this package relies on the existing launch scripts from the
+Turtlebot 3 package, so this step is fairly straightforward.
+
+```bash
+ros2 launch gazebo_exercise exercise_launch.py
+```
+
+For more information on the argumnets, run
+
+```bash
+ros2 launch gazebo_exercise exercise_launch.py --show-args
+```
+
+>**Note:** There could be a lot more arguments (including a previously existing rosbag record
+>argument) in addition to the rosbag record argument from the Turtlebot 3 lanch
+>file.
+
