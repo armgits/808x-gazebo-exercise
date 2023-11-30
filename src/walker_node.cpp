@@ -46,6 +46,32 @@ bool Walker::robotSenseRight() {
   return false;
 }
 
+void Walker::robotTurn(char direction) {
+  auto stop_message {geometry_msgs::msg::Twist()};
+  stop_message.linear.set__x(0);
+  stop_message.linear.set__y(0);
+  stop_message.linear.set__z(0);
+  stop_message.angular.set__x(0);
+  stop_message.angular.set__y(0);
+  stop_message.angular.set__z(0);
+  walker_->publish(stop_message);
+
+  switch(direction) {
+    case Walker::direction::left: {
+      auto turn_message {geometry_msgs::msg::Twist()};
+      turn_message.angular.set__z(-20 * M_PI/180);
+      walker_->publish(turn_message);
+      break;
+    }
+
+    case Walker::direction::right: {
+      auto turn_message {geometry_msgs::msg::Twist()};
+      turn_message.angular.set__z(-20 * M_PI/180);
+      walker_->publish(turn_message);
+      break;
+    }
+  }
+}
 
   return 0;
 }
