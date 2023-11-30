@@ -12,5 +12,13 @@ Walker::Walker() : Node("walker") {
 
   timer_ = this->create_wall_timer(250ms, std::bind(&Walker::timerCallback, this));
 }
+
+void Walker::scannerCallback(const sensor_msgs::msg::LaserScan& data) {
+  if (data.header.stamp.sec == 0)
+    return;
+
+  scan_ = data;
+}
+
   return 0;
 }
