@@ -33,5 +33,19 @@ bool Walker::robotSenseLeft() {
   return false;
 }
 
+bool Walker::robotSenseRight() {
+  if (scan_.ranges.empty())
+    return false;
+
+  // Sense robot right
+  for (auto d_i {scan_.ranges.rbegin()}; d_i < scan_.ranges.rbegin()+30; d_i++) {
+    if (*d_i < 0.2 * scan_.range_max)
+      return true;
+  }
+
+  return false;
+}
+
+
   return 0;
 }
