@@ -73,5 +73,27 @@ void Walker::robotTurn(char direction) {
   }
 }
 
+void Walker::timerCallback() {
+  auto forward_message {geometry_msgs::msg::Twist()};
+  forward_message.linear.set__x(0.3);
+  walker_->publish(forward_message);
+
+  if (robotSenseLeft() && robotSenseRight())
+    robotTurn(Walker::direction::right);
+
+  if (robotSenseRight())
+    robotTurn(Walker::direction::left);
+
+  if (robotSenseLeft())
+    robotTurn(Walker::direction::right);
+}
+
+// Main function
+int main(int argc, char * argv[]) {
+  rclcpp::init(argc, argv);
+
+  rclcpp::spin(std::make_unique<Walker>());
+  rclcpp::shutdown();
+
   return 0;
 }
