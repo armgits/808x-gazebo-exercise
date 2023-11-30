@@ -20,5 +20,18 @@ void Walker::scannerCallback(const sensor_msgs::msg::LaserScan& data) {
   scan_ = data;
 }
 
+bool Walker::robotSenseLeft() {
+  if (scan_.ranges.empty())
+    return false;
+
+  // Sense robot left
+  for (auto d_i {scan_.ranges.begin()}; d_i < scan_.ranges.begin()+30; d_i++) {
+    if (*d_i < 0.2 * scan_.range_max)
+      return true;
+  }
+
+  return false;
+}
+
   return 0;
 }
