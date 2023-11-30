@@ -40,6 +40,8 @@ def generate_launch_description():
     turtlebot3_launch_cmd = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(pkg_turtlebot3_gazebo, 'launch', 'turtlebot3_house.launch.py')
+        ),
+        launch_arguments={'x_pose': '-1.0', 'y_pose': '3.0'}.items()
         )
 
     record_bag_process = ExecuteProcess(
