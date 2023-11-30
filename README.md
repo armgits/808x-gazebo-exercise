@@ -20,3 +20,9 @@ ENPM808X - Abhishekh Reddy Munnangi, 119399002
 - `geometry_msgs` - Geometry Messages Library
 - `sensor_msgs` - Sensor Messages Library
 - `ros2launch` - ROS2 Launch Library for Launch file support
+
+#### Additional notes and considerations
+
+- The following section assumes that you have an existing ROS2 workspace. If not,
+see [how to create one](https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html#create-a-new-directory).
+
