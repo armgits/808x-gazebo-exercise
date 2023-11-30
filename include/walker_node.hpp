@@ -12,6 +12,9 @@
 class Walker : public rclcpp::Node {
  public:
   Walker();
+
+  enum direction {left = 'L', right = 'R'};
+
  private:
   void timerCallback();
   void scannerCallback(const sensor_msgs::msg::LaserScan& data);
